@@ -1,4 +1,4 @@
-package com.intergalacticallcenter.attentionbucket;
+package com.intergalacticcallcenter.dto.abc;
 
 public enum Status {
 	

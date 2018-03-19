@@ -1,4 +1,4 @@
-package com.intergalacticallcenter.dto;
+package com.intergalacticcallcenter.dto.abc;
 
 public enum EmployeeType {
 	

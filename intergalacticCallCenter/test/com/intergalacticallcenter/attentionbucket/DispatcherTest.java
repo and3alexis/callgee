@@ -3,36 +3,55 @@ package com.intergalacticallcenter.attentionbucket;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutionException;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.intergalacticallcenter.dto.Call;
-import com.intergalacticallcenter.dto.Employee;
-import com.intergalacticallcenter.dto.EmployeeType;
+import com.intergalacticcallcenter.attentionbuckect.Dispatcher;
+import com.intergalacticcallcenter.attentionbuckect.DispatcherImpl;
+import com.intergalacticcallcenter.dto.Call;
+import com.intergalacticcallcenter.dto.Employee;
+import com.intergalacticcallcenter.dto.abc.CallFactory;
+import com.intergalacticcallcenter.dto.abc.EmployeeType;
+import com.intergalacticcallcenter.dto.abc.Status;
+import com.intergalacticcallcenter.employee.EmployeeStorage;
+import com.intergalacticcallcenter.employee.EmployeeStorageController;
+import com.intergalacticcallcenter.employee.EmployeeStorageControllerImpl;
+import com.intergalacticcallcenter.oncall.ExecutorServiceWrap;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:springContext.xml" })
 public class DispatcherTest {
 	
 	private Dispatcher dispatcher;
-
+	
+	@Autowired
+	private ExecutorServiceWrap executorServiceWrap;
+	
+	@Autowired
+	private CallFactory callFactory;
+	
 	@Before
 	public void setUp() throws Exception {
-		BlockingQueue<Employee> employeeCollection = new EmployeeCollection();
-		employeeCollection.put(new Employee(EmployeeType.DIRECTOR));
-		employeeCollection.put(new Employee(EmployeeType.SURPERVISOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		employeeCollection.put(new Employee(EmployeeType.OPERATOR));
-		
-		dispatcher = new DispatcherImpl(null, new AttentionBucketCollection(), employeeCollection);
+		EmployeeStorage employeeStorage = new EmployeeStorage();
+		EmployeeStorageController employeeStorageController = new EmployeeStorageControllerImpl(employeeStorage);
+		employeeStorageController.addEmployee(new Employee(EmployeeType.DIRECTOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.SURPERVISOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
+		dispatcher = new DispatcherImpl(executorServiceWrap, employeeStorageController, callFactory);
 	}
 
 	@After
@@ -71,37 +90,9 @@ public class DispatcherTest {
 		
 	}
 	
-	@Test
-	public void testDispatchCall11calls() throws InterruptedException, ExecutionException {
-		Call callFuture1 = dispatcher.dispatchCall(new Call());
-		Call callFuture2 = dispatcher.dispatchCall(new Call());
-		Call callFuture3 = dispatcher.dispatchCall(new Call());
-		Call callFuture4 = dispatcher.dispatchCall(new Call());
-		Call callFuture5 = dispatcher.dispatchCall(new Call());
-		Call callFuture6 = dispatcher.dispatchCall(new Call());
-		Call callFuture7 = dispatcher.dispatchCall(new Call());
-		Call callFuture8 = dispatcher.dispatchCall(new Call());
-		Call callFuture9 = dispatcher.dispatchCall(new Call());
-		Call callFuture10 = dispatcher.dispatchCall(new Call());
-		Call callFuture11 = dispatcher.dispatchCall(new Call());
-		
-		assertDispatchCall(callFuture1);
-		assertDispatchCall(callFuture2);
-		assertDispatchCall(callFuture3);
-		assertDispatchCall(callFuture4);
-		assertDispatchCall(callFuture5);
-		assertDispatchCall(callFuture6);
-		assertDispatchCall(callFuture7);
-		assertDispatchCall(callFuture8);
-		assertDispatchCall(callFuture9);
-		assertDispatchCall(callFuture10);
-		assertDispatchCall(callFuture11);
-		
-	}
-	
 	private void assertDispatchCall(Call callFuture) throws InterruptedException, ExecutionException{
 		assertNotNull(callFuture);
-		assertEquals(Status.PENDING, callFuture.getStatus());
+		assertEquals(Status.STARTED, callFuture.getStatus());
 		System.out.println(callFuture);
 	}
 

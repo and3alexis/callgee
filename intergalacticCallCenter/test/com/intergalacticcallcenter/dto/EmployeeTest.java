@@ -1,10 +1,13 @@
-package com.intergalacticallcenter.dto;
+package com.intergalacticcallcenter.dto;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.intergalacticcallcenter.dto.Employee;
+import com.intergalacticcallcenter.dto.abc.EmployeeType;
 
 public class EmployeeTest {
 
@@ -21,7 +24,7 @@ public class EmployeeTest {
 		Employee employee = new Employee(EmployeeType.OPERATOR);
 		assertNotNull(employee);
 		assertEquals(EmployeeType.OPERATOR, employee.getEmployeeType());
-		assertEquals(false, employee.isAvalible());
+		assertEquals("Employee [employeeType=OPERATOR]", employee.toString());
 	}
 	
 	@Test
@@ -29,7 +32,6 @@ public class EmployeeTest {
 		Employee employee = new Employee(EmployeeType.SURPERVISOR);
 		assertNotNull(employee);
 		assertEquals(EmployeeType.SURPERVISOR, employee.getEmployeeType());
-		assertEquals(false, employee.isAvalible());
 	}
 	
 	@Test
@@ -37,7 +39,6 @@ public class EmployeeTest {
 		Employee employee = new Employee(EmployeeType.DIRECTOR);
 		assertNotNull(employee);
 		assertEquals(EmployeeType.DIRECTOR, employee.getEmployeeType());
-		assertEquals(false, employee.isAvalible());
 	}
 
 }

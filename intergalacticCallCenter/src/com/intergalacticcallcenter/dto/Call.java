@@ -1,10 +1,19 @@
-package com.intergalacticallcenter.dto;
+package com.intergalacticcallcenter.dto;
 
 import java.util.concurrent.TimeUnit;
 
-import com.intergalacticallcenter.attentionbucket.Status;
+import com.intergalacticcallcenter.dto.abc.Status;
 
-public class Call {
+public class Call implements Comparable<Call>{
+	
+	public Call() {
+	}
+
+	public Call(long id) {
+		this.id = id;
+	}
+
+	private long id;
 	
 	private Employee employee;
 	
@@ -64,6 +73,17 @@ public class Call {
 		builder.append("time=").append(TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)).append(" secs ").append("]");
 		
 		return builder.toString();
+	}
+
+	@Override
+	public int compareTo(Call o) {
+		if(this.getId() < o.getId())
+			return 1;
+		return -1;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 }
