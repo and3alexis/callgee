@@ -30,10 +30,10 @@ https://s3-sa-east-1.amazonaws.com/intergalacticcallcenter/index.html
 ```
 
 
-En el proyecto está el digrama de clases
+En el proyecto está el diagrama de clases
 
 ```
-https://github.com/and3alexis/callgee/blob/feature_dispatch/intergalacticCallCenter/diagramming/diagramClass.jpg
+https://github.com/and3alexis/callgee/blob/master/intergalacticCallCenter/diagramming/diagramClass.jpg
 ```
 
 ## Construido con
