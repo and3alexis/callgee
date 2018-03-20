@@ -25,4 +25,18 @@ public class CallResponse {
 		this.zone = zone;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("CallResponse [");
+		if (status != null)
+			builder.append("status=").append(status).append(", ");
+		if (zone != null)
+			builder.append("zone=").append(zone);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+
 }

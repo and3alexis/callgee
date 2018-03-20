@@ -8,14 +8,14 @@ import com.intergalacticcallcenter.dto.Employee;
 import com.intergalacticcallcenter.dto.abc.CallFactory;
 
 @Component
-public class AllocationAreaEmployeeImpl implements AllocationAreaEmployee {
+public class LobbyImpl implements Lobby {
 	
 	private EmployeeStorageController employeeStorageController;
 	
 	private CallFactory callFactory;
 	
 	@Autowired
-	public AllocationAreaEmployeeImpl(EmployeeStorageController employeeStorageController, CallFactory callFactory) {
+	public LobbyImpl(EmployeeStorageController employeeStorageController, CallFactory callFactory) {
 		this.employeeStorageController = employeeStorageController;
 		this.callFactory = callFactory;
 	}

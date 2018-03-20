@@ -1,17 +1,22 @@
 package com.intergalacticcallcenter.attentionbuckect;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import com.intergalacticcallcenter.dto.Call;
 import com.intergalacticcallcenter.dto.CallResponse;
 import com.intergalacticcallcenter.dto.abc.CallFactory;
 import com.intergalacticcallcenter.dto.abc.Status;
 import com.intergalacticcallcenter.dto.abc.Zone;
 
+@Controller
 public class AttentionBucketControllerImpl implements AttentionBucketController{
 	
 	private AttentionBucket attentionBucket;
 	
 	private CallFactory callFactory;
 	
+	@Autowired
 	public AttentionBucketControllerImpl(AttentionBucket attentionBucket, CallFactory callFactory) {
 		this.attentionBucket = attentionBucket;
 		this.callFactory = callFactory;

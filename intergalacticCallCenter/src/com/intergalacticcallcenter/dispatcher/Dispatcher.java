@@ -1,4 +1,4 @@
-package com.intergalacticcallcenter.attentionbuckect;
+package com.intergalacticcallcenter.dispatcher;
 
 import com.intergalacticcallcenter.dto.Call;
 

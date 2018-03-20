@@ -3,6 +3,7 @@ package com.intergalacticcallcenter.dto;
 import java.util.concurrent.TimeUnit;
 
 import com.intergalacticcallcenter.dto.abc.Status;
+import com.intergalacticcallcenter.dto.abc.Zone;
 
 public class Call implements Comparable<Call>{
 	
@@ -22,6 +23,8 @@ public class Call implements Comparable<Call>{
 	private long startTime;
 	
 	private long endTime;
+	
+	private Zone zone;
 
 	public Employee getEmployee() {
 		return employee;
@@ -60,19 +63,7 @@ public class Call implements Comparable<Call>{
 		setEmployee(that.getEmployee());
 		setEndTime(that.getEndTime());
 		setStartTime(that.getStartTime());
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Call [");
-		if (employee != null)
-			builder.append("employee=").append(employee).append(", ");
-		if (status != null)
-			builder.append("status=").append(status).append(", ");
-		builder.append("time=").append(TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)).append(" secs ").append("]");
-		
-		return builder.toString();
+		setZone(that.getZone());
 	}
 
 	@Override
@@ -85,5 +76,31 @@ public class Call implements Comparable<Call>{
 	public long getId() {
 		return id;
 	}
+
+
+	public Zone getZone() {
+		return zone;
+	}
+
+	public void setZone(Zone zone) {
+		this.zone = zone;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Call [id=").append(id).append(", ");
+		if (employee != null)
+			builder.append("employee=").append(employee).append(", ");
+		if (status != null)
+			builder.append("status=").append(status).append(", ");
+		builder.append("time=").append(TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)).append(" secs ").append("]");
+		if (zone != null)
+			builder.append("zone=").append(zone);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

@@ -2,8 +2,8 @@ package com.intergalacticcallcenter.oncall;
 
 import com.intergalacticcallcenter.dto.Call;
 
-public interface Ertrt {
+public interface OnCallConsumer {
 
-	Call getCallFinnished();
+	Call getCall();
 
 }

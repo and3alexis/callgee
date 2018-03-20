@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.intergalacticcallcenter.attentionbuckect.Dispatcher;
-import com.intergalacticcallcenter.attentionbuckect.DispatcherImpl;
+import com.intergalacticcallcenter.dispatcher.Dispatcher;
+import com.intergalacticcallcenter.dispatcher.DispatcherImpl;
 import com.intergalacticcallcenter.dto.Call;
 import com.intergalacticcallcenter.dto.Employee;
 import com.intergalacticcallcenter.dto.abc.CallFactory;
@@ -23,16 +23,13 @@ import com.intergalacticcallcenter.dto.abc.Status;
 import com.intergalacticcallcenter.employee.EmployeeStorage;
 import com.intergalacticcallcenter.employee.EmployeeStorageController;
 import com.intergalacticcallcenter.employee.EmployeeStorageControllerImpl;
-import com.intergalacticcallcenter.oncall.ExecutorServiceWrap;
+import com.intergalacticcallcenter.oncall.ExecutorServiceWrapImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:springContext.xml" })
 public class DispatcherTest {
 	
 	private Dispatcher dispatcher;
-	
-	@Autowired
-	private ExecutorServiceWrap executorServiceWrap;
 	
 	@Autowired
 	private CallFactory callFactory;
@@ -51,7 +48,7 @@ public class DispatcherTest {
 		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
 		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
 		employeeStorageController.addEmployee(new Employee(EmployeeType.OPERATOR));
-		dispatcher = new DispatcherImpl(executorServiceWrap, employeeStorageController, callFactory);
+		dispatcher = new DispatcherImpl(new ExecutorServiceWrapImpl(), employeeStorageController, callFactory);
 	}
 
 	@After

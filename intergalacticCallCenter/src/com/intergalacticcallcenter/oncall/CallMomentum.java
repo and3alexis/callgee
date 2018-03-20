@@ -1,7 +1,6 @@
 package com.intergalacticcallcenter.oncall;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.ThreadLocalRandom;
 
 import com.intergalacticcallcenter.dto.Call;
 import com.intergalacticcallcenter.dto.abc.CallFactory;
@@ -31,7 +30,6 @@ public class CallMomentum implements Callable<Call>{
 	private Call onCall(){
 		boolean onCall = true;
 		Call call = callFactory.getCallStarted(this.call);
-		int callDurability = ThreadLocalRandom.current().nextInt(0,20);
 		while (onCall) {
 			if(System.nanoTime() - call.getStartTime() > (this.callDuraability * 1000000000L)){
 				this.employeeStorageController.addEmployee(call.getEmployee());

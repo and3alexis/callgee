@@ -39,7 +39,7 @@ public class CallTest {
 		assertEquals(time, call.getEndTime());
 		assertEquals(time, call.getStartTime());
 		assertEquals(Status.PENDING, call.getStatus());
-		assertEquals("Call [employee=Employee [employeeType=OPERATOR], status=PENDING, time=0 secs ]", call.toString());
+		assertEquals("Call [id=0, employee=Employee [employeeType=OPERATOR], status=PENDING, time=0 secs ]]", call.toString());
 	}
 	
 	@Test

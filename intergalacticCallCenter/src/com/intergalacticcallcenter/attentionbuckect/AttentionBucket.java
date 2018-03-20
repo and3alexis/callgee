@@ -2,8 +2,11 @@ package com.intergalacticcallcenter.attentionbuckect;
 
 import java.util.concurrent.PriorityBlockingQueue;
 
+import org.springframework.stereotype.Component;
+
 import com.intergalacticcallcenter.dto.Call;
 
+@Component
 public class AttentionBucket extends PriorityBlockingQueue<Call> {
 
 	/**

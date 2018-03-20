@@ -1,17 +1,20 @@
-package com.intergalacticcallcenter.attentionbuckect;
+package com.intergalacticcallcenter.dispatcher;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.intergalacticcallcenter.dto.Call;
 import com.intergalacticcallcenter.dto.abc.CallFactory;
+import com.intergalacticcallcenter.dto.abc.IntergalacticCallCenterException;
 import com.intergalacticcallcenter.employee.EmployeeStorageController;
 import com.intergalacticcallcenter.oncall.CallMomentum;
 import com.intergalacticcallcenter.oncall.ExecutorServiceWrap;
 
+@Component
 public class DispatcherImpl implements Dispatcher {
 	
 	private Lock dispatcherlock = new ReentrantLock();
@@ -41,13 +44,10 @@ public class DispatcherImpl implements Dispatcher {
 			executorServiceWrap.submit(callMomentum);
 			return call2;
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IntergalacticCallCenterException(e);
 		} finally {
 			dispatcherlock.unlock();
 		}
-		return null;
-		
 	}
 	
 	private CallMomentum getCallMomentum(Call call2, int callDurability){
