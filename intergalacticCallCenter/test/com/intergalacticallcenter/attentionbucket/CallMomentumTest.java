@@ -22,6 +22,10 @@ import com.intergalacticcallcenter.employee.EmployeeStorageController;
 import com.intergalacticcallcenter.employee.EmployeeStorageControllerImpl;
 import com.intergalacticcallcenter.oncall.CallMomentum;
 
+/*
+ * Para mas info ver la url:
+ * https://s3-sa-east-1.amazonaws.com/intergalacticcallcenter/index.html
+ */
 public class CallMomentumTest {
 	
 	private ExecutorService executor;
@@ -34,7 +38,14 @@ public class CallMomentumTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	/*
+	Escenario: ICC-0006 Llamada finalizada
+	Dado que: Un empleado atiende una llamada
+	Cuando: la llamada finaliza
+	Entonces: el empleado vuelve a estar disponible 
+	y el estado de la llamada cambia a finalizada
+	*/
 	@Test
 	public void testCall() throws Exception {
 		EmployeeStorageController employeeStorageController = new EmployeeStorageControllerImpl(new EmployeeStorage());

@@ -66,7 +66,7 @@ public class OnCallConsumerImpl extends Thread implements OnCallConsumer {
 			if(time < 5){
 				call.setZone(Zone.CLOUDY);
 			}else if(time > 10){
-				call.setZone(Zone.RAINNIG);
+				call.setZone(Zone.RAINNING);
 			}else{
 				call.setZone(Zone.SUNNY);
 			}

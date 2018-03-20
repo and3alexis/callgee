@@ -11,6 +11,10 @@ import com.intergalacticcallcenter.dto.Employee;
 import com.intergalacticcallcenter.dto.abc.EmployeeType;
 import com.intergalacticcallcenter.dto.abc.Status;
 
+/*
+ * Para mas info ver la url:
+ * https://s3-sa-east-1.amazonaws.com/intergalacticcallcenter/index.html
+ */
 public class CallTest {
 	
 	private Employee employee;

@@ -25,6 +25,10 @@ import com.intergalacticcallcenter.employee.EmployeeStorageController;
 import com.intergalacticcallcenter.employee.EmployeeStorageControllerImpl;
 import com.intergalacticcallcenter.oncall.ExecutorServiceWrapImpl;
 
+/*
+ * Para mas info ver la url:
+ * https://s3-sa-east-1.amazonaws.com/intergalacticcallcenter/index.html
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:springContext.xml" })
 public class DispatcherTest {
@@ -54,7 +58,15 @@ public class DispatcherTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	/*
+	Escenario: ICC-0005 Llamada iniciada
+	Dado que: una llamada ya se asignó un empleado
+	Cuando: se envía al dispatcher
+	Entonces: el estado de la llamada cambia el estado a iniciada
+	Y se captura el tiempo fin de estado pendiente
+	Y se captura el tiempo de comienzo
+	*/
 	@Test
 	public void testDispatchCall() throws InterruptedException, ExecutionException {
 		Call callPending = dispatcher.dispatchCall(new Call());
