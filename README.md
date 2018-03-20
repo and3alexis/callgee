@@ -2,7 +2,7 @@
 
 ## Comienzo
 
-Clonas el repo en tu equipo y estas listo para comenzar.
+Clonas el repo en tu equipo y estás listo para comenzar.
 
 ### Prerequisitos
 
@@ -19,18 +19,18 @@ mvn install
 
 ## Pruebas unitarias
 
-Las pruebas unitarias estan en JUNIT 4 
+Las pruebas unitarias están en JUNIT 4 
 
 ### Documentación
 
-Puedes ver en la web el documento BDD ( behavior-driven development ) que realicé, tambien hago referencia en las pruebas unitarias para la explicacion del escenario:
+Puedes ver en la web el documento BDD ( behavior-driven development ) que realicé, tambien hago referencia en las pruebas unitarias para la explicación del escenario:
 
 ```
 https://s3-sa-east-1.amazonaws.com/intergalacticcallcenter/index.html
 ```
 
 
-En el proyecto esta el digrama de clases
+En el proyecto está el digrama de clases
 
 ```
 https://github.com/and3alexis/callgee/blob/feature_dispatch/intergalacticCallCenter/diagramming/diagramClass.jpg
